@@ -19,7 +19,8 @@
 - Add pagination in All plants page.
 - In all plants page, user can filter by `category` and `is_edible`.
 - In Plant detail page , Add related plants (based on the same category, use filter !)
-
+- For the images, backgrounds, fonts you can use whatever you like. As for the content like categories,  make sure you add real plants with real plants images.
+  
 ## wireframe for the main pages
 <img width="1771" style="width:100%" alt="Screenshot 2024-03-19 at 2 27 18 PM" src="assets/main-wireframe.png">
 
