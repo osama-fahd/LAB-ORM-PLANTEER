@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block title %} All Plants {% endblock %}
+
+{% block content %}
+
+<div class="main_home">
+    <div class="top_section">
+        <h1 class="phudu">Planteer</h1>
+        <h2>Plant Database For Plants Lovers</h2>
+        <form role="search" method="get" action="{% url 'plants:search_view' %}">
+            <input type="search" placeholder="Search" name="serach" aria-label="Search"  value="{{request.GET.search}}" required minlength="1" class="form-control"/>
+        </form>
+    </div>
+
+    <div class="bottom_section">
+        <h1 class="mb-3 mt-5 phudu">All Plants</h1>
+        <div class="col-12">
+            <!-- <div class="row"> -->
+                <div class="d-flex flex-row flex-wrap justify-content-start align-items-baseline gap-3">
+                    {% for plant in plants %}
+                        <div style="width: 32%; height: 40%" class="mb-5">
+                            <div class="d-flex flex-column justify-content-start gap-2">
+                                <img style="height: 350px" src="{{plant.image.url}}" class="rounded"/>
+                                <a class="mt-2 text-decoration-none text-black" href="{% url 'plants:detail_view' plant.id %}">
+                                    <h4>{{plant.name}}</h4>
+                                </a>
+                                {% if plant.is_edible %}
+                                    <h5 class="text-success">Edible</h5>
+                                {% else %}
+                                    <h5 class="text-warning">Not Edible</h5>
+                                {% endif %}
+                                <h6 class="text-secondary">Category: {{plant.category}}</h6>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

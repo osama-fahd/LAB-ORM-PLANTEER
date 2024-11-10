@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Update Plant {% endblock %}
+
+{% block content %}
+
+<div class="main_detail">
+    <div class="col-6">
+        <h1 class="phudu"> {{plant.name}} </h1>
+        <form class="d-flex flex-column gap-2" action="{% url 'plants:update_view' plant.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name"  class="form-control" value="{{plant.name}}"/>
+            <textarea name="about" class="form-control">
+                {{plant.about}}
+            </textarea>
+            <textarea name="used_for" class="form-control">
+                {{plant.used_for}}
+            </textarea>
+
+            <select name="category" class="form-control">
+                {% for value, label in categories %}
+                    <option value="{{value}}">{{label}}</option>
+                {% endfor %}
+            </select>
+
+            <input type="file" name="image" accept="image/*" class="form-control"/>
+
+            <div class="d-flex flex-row gap-3 align-items-center mt-3">
+                <h4>Is the plant edible?</h4>
+                YES 
+                <input style="width: 64px;" class="form-control" type="radio" name="is_edible" value="True"/>
+                NO
+                <input style="width: 64px;" class="form-control" type="radio" name="is_edible"  value="False"/>
+            </div>
+
+            <input type="submit" value="Add Plant" class="btn btn-primary"/>
+        </form>
+    </div>
+
+    <img class="col-5" src="{{plant.image.url}}" />
+</div>
+
+{% endblock %}

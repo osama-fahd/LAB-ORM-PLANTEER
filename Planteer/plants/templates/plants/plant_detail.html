@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Plant Details {% endblock %}
+
+{% block content %}
+
+<div class="main_detail">
+    <img class="col-6" src="{{plant.image.url}}" />
+
+    <div class="col-5">
+        <h1 class="mb-4">{{plant.name}}</h1>
+        <h2 class="text-secondary mb-4">Category: {{plant.category}}</h2>
+        <p class="text-secondary mb-3"> {{plant.about}} </p>
+
+        <div class="d-flex mb-3">
+            <h5 class="m-0 p-0">Is Edible: </h5> 
+            {% if plant.is_edible %}
+                <h5 class="m-0 p-0 text-success">Yes</h5>
+            {% else %}
+                <h5 class="m-0 p-0 text-warning">No</h5>
+            {% endif %}
+        </div>
+
+        <h5 class="m-0">Used For:</h5>
+        <p><b> {{plant.used_for}} </b></p>
+
+        <div class="mt-4 d-flex flex-row justify-content-start gap-3">
+            <a href="{% url 'plants:update_view' plant.id %}">
+                <button type="button" class="btn btn-warning">Update Plant</button>
+            </a>
+    
+            <a href="{% url 'plants:delete_view' plant.id %}">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete Plant</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

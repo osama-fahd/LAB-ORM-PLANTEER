@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Add Plant {% endblock %}
+
+{% block content %}
+
+<div class="main_home">
+    <h1 class="phudu">Add New Plant</h1>
+    <div class="col-6">
+        <form class="d-flex flex-column gap-2" action="{% url 'plants:new_view' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Plant Name" class="form-control" required/>
+            <textarea placeholder="Description About The Plant" name="about" class="form-control" required></textarea>
+            <textarea placeholder="The Plant Usage" name="used_for" class="form-control" required></textarea>
+
+            <select name="category" class="form-control" required>
+                <option value="" selected>Select Plant Category</option>
+                {% for value, label in categories %}
+                    <option value="{{value}}">{{label}}</option>
+                {% endfor %}
+            </select>
+
+            <input type="file" name="image" accept="image/*" class="form-control"/>
+
+            <div class="d-flex flex-row gap-3 align-items-center mt-3">
+                <h4>Is the plant edible?</h4>
+                YES 
+                <input style="width: 64px;" class="form-control" type="radio" name="is_edible" value="True" required/>
+                NO
+                <input style="width: 64px;" class="form-control" type="radio" name="is_edible"  value="False" required/>
+            </div>
+
+            <input type="submit" value="Add Plant" class="btn btn-primary"/>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
