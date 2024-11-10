@@ -45,14 +45,15 @@ def delete_view(request: HttpRequest, plant_id:int):
 
 def search_view(request: HttpRequest):
     if "search" in request.GET and len(request.GET["search"]) >= 1:
-        plant = Plant.objects.filter(name__contains=request.GET["search"])
+        print(request.GET["search"])
+        plants = Plant.objects.filter(name__contains=request.GET["search"])
         
         if "order_by" in request.GET and request.GET["order_by"] == "created_at":
-            plant = plant.order_by("-created_at")
+            plants = plants.order_by("-created_at")
     else:
-        plant = []
+        plants = []
     
-    return render(request, "plants/search_plant.html", {"plant": plant})
+    return render(request, "plants/search_plant.html", {"plants": plants})
 
 def all_view(request: HttpRequest):
     

@@ -5,8 +5,8 @@
 {% block content %}
 
 <div class="main_home">
-    {% if plant %}
-        <h1 class="mb-3 mt-5 phudu">found [{{plant.count}}] Search Results</h1>
+    {% if plants %}
+        <h1 class="mb-3 mt-5 phudu">found [{{plants.count}}] Search Results</h1>
         <h3> <span class="phudu">Results for:</span>  {{request.GET.search}} </h3>
         <div class="d-flex justify-content-end">
             <form action="{% url 'plants:search_view' %}" method="GET">
@@ -25,12 +25,12 @@
         <h1><span class="phudu">No search results for</span> "{{request.GET.search}}"</h1>
     {% endif %}
 
-    <div class="col-12">
+    <div class="mt-5 col-12">
         <div class="d-flex flex-row flex-wrap justify-content-start align-items-baseline gap-3">
             {% for plant in plants %}
                 <div style="width: 32%;" class="mb-5">
                     <div class="d-flex flex-column justify-content-start gap-2">
-                        <img src="{{plant.image.url}}" class="rounded"/>
+                        <img style="height: 350px" src="{{plant.image.url}}" class="rounded"/>
                         <a class="mt-2 text-decoration-none text-black" href="{% url 'plants:detail_view' plant.id %}">
                             <h4>{{plant.name}}</h4>
                         </a>
