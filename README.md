@@ -1,6 +1,17 @@
+![image](https://github.com/user-attachments/assets/abb86937-fbba-4670-a034-67b9bb1467bc)
+
+![image](https://github.com/user-attachments/assets/c019d55a-5dd0-4aa2-a972-4b431f0b2be9)
+
+![image](https://github.com/user-attachments/assets/9803dca6-3b77-474b-be6b-27ec36c86b1a)
+
+![image](https://github.com/user-attachments/assets/d5a4d487-f4f0-402a-be29-5822b25f7aac)
+
+![image](https://github.com/user-attachments/assets/72e20e53-f980-45ce-8571-6aa519b37595)
+
+![image](https://github.com/user-attachments/assets/e53d7019-cce4-4666-b17d-0c93500d8308)
+
+
 # LAB-ORM-PLANTEER
-
-
 ## Using what you learned, Create a new website called "Planteer" , this website has the following pages/paths:
 - Home page `/`
 - All Plants page : `plants/all/`
